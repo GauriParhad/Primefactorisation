@@ -1,18 +1,37 @@
 public class PowerFactorisation {
-    public static void main(String[] args) {
 
-        long n = Long.parseLong(args[0]);
+    static void factorize(long n) {
+        int count = 0;
 
-        System.out.print("The prime factorization of is:"+n);
+        while (!(n % 2 > 0)) {
+            n >>= 1;
 
-        for (long i = 2; i*i<= n; i++) {
+            count++;
+        }
+        if (count > 0) {
+            System.out.println("2" + " " + count);
+        }
 
+        for (long i = 3; i <= (long) Math.sqrt(n); i += 2) {
+            count = 0;
             while (n % i == 0) {
-                System.out.print(i + " ");
+                count++;
                 n = n / i;
             }
+            if (count > 0) {
+                System.out.println(i + " " + count);
+            }
         }
-        if (n > 1) System.out.println(n);
-        else       System.out.println();
+
+        if (n > 2) {
+            System.out.println(n + " " + "1");
+        }
     }
+
+    public static void main(String[] args) {
+        long n = 1000000000000000000L;
+        factorize(n);
+    }
+
+
 }
